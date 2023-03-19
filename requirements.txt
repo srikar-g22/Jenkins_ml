@@ -3,5 +3,4 @@ scikit-learn
 imblearn
 matplotlib
 seaborn
-pickle
 xgboost
