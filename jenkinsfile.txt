@@ -1,13 +1,8 @@
 pipeline {
     agent any
-    tools {
-        docker {
-            // specify the Docker image to use for the build
-            install 'docker'
-            // arguments to pass to the Docker container
-            arguments '-u root'
+        tools {
+            dockerTool 'docker'
         }
-    }
     stages {
         stage('Build') {
             steps {
