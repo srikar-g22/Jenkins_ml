@@ -1,9 +1,13 @@
 pipeline {
     agent any
+    tools {
         docker {
-            image 'python:3.8.3'
-            args '-u root'
+            // specify the Docker image to use for the build
+            install 'docker'
+            // arguments to pass to the Docker container
+            arguments '-u root'
         }
+    }
     stages {
         stage('Build') {
             steps {
