@@ -6,8 +6,6 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                sh 'brew update'
-                sh 'brew install python3-pip -y'
                 sh 'pip3 install -r requirements.txt'
             }
         }
