@@ -2,17 +2,24 @@ pipeline {
     agent any
     tools {
         dockerTool 'docker_jenkins'
-        docker_jenkins 'python:3.8-slim'
     }
     stages {
         stage('Setup') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                script {
+                    docker.image('python:3.8-slim').inside {
+                        sh 'pip3 install -r requirements.txt'
+                    }
+                }
             }
         }
         stage('Train') {
             steps {
-                sh 'python trainingML.py'
+                script {
+                    docker.image('python:3.8-slim').inside {
+                        sh 'python trainingML.py'
+                    }
+                }
             }
         }  
     }
