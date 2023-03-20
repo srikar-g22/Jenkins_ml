@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         dockerTool 'docker_jenkins'
-        dockerTool 'python:3.8'
+        dockerTool 'python:3.8-slim-buster'
     }
     stages {
         stage('Setup') {
