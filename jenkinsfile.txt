@@ -1,7 +1,8 @@
 pipeline {
     agent any
     tools {
-        dockerTool 'docker_jenkins'
+        // use jenkins_docker instead of docker_jenkins
+        dockerTool 'jenkins_docker'
     }
     stages {
         stage('Setup') {
