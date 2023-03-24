@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('creating docker image'){
             steps {
-                sh "/usr/local/bin/docker build -t python_image:$BUILD_NUMBER"
+                sh "/usr/local/bin/docker build -t python_image:$BUILD_NUMBER ."
             }
         }
         stage ('running script inside docker container') {
