@@ -1,11 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage ('installing jupyter') {
-            steps {
-                sh '/usr/local/anaconda3/bin/pip install jupyter'
-            }  
-        }
+        // stage ('installing jupyter') {
+        //     steps {
+        //         sh '/usr/local/anaconda3/bin/pip install jupyter'
+        //     }  
+        // }
         stage ('creating python script') {
             steps {
                 sh "/Library/Frameworks/Python.framework/Versions/3.8/bin/jupyter nbconvert --to script 'trainingML.ipynb'"
