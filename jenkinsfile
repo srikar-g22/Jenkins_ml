@@ -1,27 +1,20 @@
 pipeline {
     agent any
-    tools {
-        // use jenkins_docker instead of docker_jenkins
-        dockerTool 'jenkins_docker'
-    }
     stages {
-        stage('Setup') {
+        stage ('creating python script') {
             steps {
-                script {
-                    docker.image('python:3.8.3').inside {
-                        sh 'pip3 install -r requirements.txt'
-                    }
-                }
+                sh 'jupyter nbconvert --to script 'trainingML.ipynb''
             }
         }
-        stage('Train') {
+        stage ('creating docker image'){
             steps {
-                script {
-                    docker.image('python:3.8.3').inside {
-                        sh 'python trainingML.py'
-                    }
-                }
+                sh "docker build -t python_image:$BUILD_NUMBER"
             }
-        }  
+        }
+        stage ('running script inside docker container') {
+            steps {
+                sh "docker run python_image:$BUILD_NUMBER"
+            }
+        }
     }
 }
