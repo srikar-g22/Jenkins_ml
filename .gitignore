@@ -1,0 +1,2 @@
+*.py
+# because in jenkinsfile script we are converting ipynb file to .py file so that we are ignoring .py in git
