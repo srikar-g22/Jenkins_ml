@@ -3,22 +3,22 @@ pipeline {
     stages {
         stage ('installing jupyter') {
             steps {
-                sh 'pip install jupyter'
+                sh '/usr/local/anaconda3/bin/pip install jupyter'
             }  
         }
         stage ('creating python script') {
             steps {
-                sh "jupyter nbconvert --to script 'trainingML.ipynb'"
+                sh "/Library/Frameworks/Python.framework/Versions/3.8/bin/jupyter nbconvert --to script 'trainingML.ipynb'"
             }
         }
         stage ('creating docker image'){
             steps {
-                sh "docker build -t python_image:$BUILD_NUMBER"
+                sh "/usr/local/bin/docker build -t python_image:$BUILD_NUMBER"
             }
         }
         stage ('running script inside docker container') {
             steps {
-                sh "docker run python_image:$BUILD_NUMBER" 
+                sh "/usr/local/bin/docker run python_image:$BUILD_NUMBER" 
             }
         }
     }
