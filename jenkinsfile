@@ -8,7 +8,7 @@ pipeline {
         }
         stage ('creating python script') {
             steps {
-                sh 'jupyter nbconvert --to script 'trainingML.ipynb''
+                sh "jupyter nbconvert --to script 'trainingML.ipynb'"
             }
         }
         stage ('creating docker image'){
