@@ -7,6 +7,7 @@ COPY requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 
 COPY trainingML.py ./trainingML.py
+COPY kidney_disease.csv ./kidney_disease.csv
 
 CMD python3 trainingML.py
 
