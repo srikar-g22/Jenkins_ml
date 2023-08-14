@@ -22,11 +22,11 @@ jobs:
 
       - name: Perform calculation
         id: calculate
-        run: echo "MY_VALUE::$(($MY_VALUE + 10))" 
+        run: echo "NEW_VALUE=$(($MY_VALUE + 10))" 
 
       - name: Update value
         id: update_value
-        run: echo "MY_VALUE" > initial_value.txt
+        run: echo "NEW_VALUE" > initial_value.txt
 
       - name: Display updated value
         run: cat initial_value.txt
