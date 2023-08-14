@@ -1,0 +1,32 @@
+name: Update Value Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-value:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set initial value
+        run: echo "0" >> initial_value.txt
+
+      - name: Read initial value
+        id: read_initial
+        run: echo "::set-env name=MY_VALUE::$(cat initial_value.txt)"
+
+      - name: Perform calculation
+        id: calculate
+        run: echo "::set-env name=MY_VALUE::$(($MY_VALUE + 10))"
+
+      - name: Update value
+        id: update_value
+        run: echo "${{ env.MY_VALUE }}" > initial_value.txt
+
+      - name: Display updated value
+        run: cat initial_value.txt
