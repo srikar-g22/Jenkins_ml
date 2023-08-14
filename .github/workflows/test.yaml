@@ -26,7 +26,7 @@ jobs:
 
       - name: Update value
         id: update_value
-        run: echo "${{ env.MY_VALUE }}" > initial_value.txt
+        run: echo "MY_VALUE" > initial_value.txt
 
       - name: Display updated value
         run: cat initial_value.txt
