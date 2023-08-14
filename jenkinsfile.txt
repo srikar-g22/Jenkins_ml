@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    tools {
+        // use jenkins_docker instead of docker_jenkins
+        dockerTool 'jenkins_docker'
+    }
+    stages {
+        stage('Setup') {
+            steps {
+                script {
+                    docker.image('python:3.8-slim').inside {
+                        sh 'pip3 install -r requirements.txt'
+                    }
+                }
+            }
+        }
+        stage('Train') {
+            steps {
+                script {
+                    docker.image('python:3.8-slim').inside {
+                        sh 'python trainingML.py'
+                    }
+                }
+            }
+        }  
+    }
+}
